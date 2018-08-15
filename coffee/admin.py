@@ -11,7 +11,7 @@ class InsertCapsuleAdmin(admin.ModelAdmin):
         ('ExpirationDate', {'fields': ['expirationDate']}),
     ]
 
-    list_display = ('id', 'coffeeOrigin', 'coffeeType', 'additionDate', 'expirationDate')
+    list_display = ('id', 'coffeeOrigin', 'coffeeType', 'additionDate', 'expirationDate', 'isExpired')
 
 
 admin.site.register(CoffeeCapsule, InsertCapsuleAdmin)
