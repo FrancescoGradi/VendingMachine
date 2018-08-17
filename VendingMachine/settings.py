@@ -55,7 +55,7 @@ ROOT_URLCONF = 'VendingMachine.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': [os.path.join(BASE_DIR, 'coffee/templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {

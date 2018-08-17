@@ -3,4 +3,10 @@ from django.http import HttpResponse
 
 # Semplice esempio
 def index(request):
-    return HttpResponse("Do you need a cup of coffee?")
+    return render(request, 'coffee/index.html')
+
+def about(request):
+    return render(request, 'coffee/about.html')
+
+def contact(request):
+    return render(request, 'coffee/contact.html')

@@ -1,0 +1,25 @@
+/* CSS Document */
+
+body {
+    padding-top: 50px;
+    text-align: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    text-align: left;
+    font-family: Verdana;
+    font-size: 45px;
+    padding: 45px;
+    color: chocolate;
+}
+
+.navbar-brand{
+    font-size: 170%;
+    padding: 12px 15px 0 28px;
+    background-image: url(../image/download.jpeg);
+    background-repeat: no-repeat;
+    background-size: 26px 23px;
+    background-position: 0 12px;
+}
