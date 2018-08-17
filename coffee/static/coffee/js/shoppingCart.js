@@ -22,8 +22,6 @@ var shoppingCart = (function () {
 
     loadCart();
 
-
-
     // Public methods and properties
     var obj = {};
 
