@@ -15,6 +15,16 @@ h1 {
     color: chocolate;
 }
 
+.paymentcss {
+    text-align: left;
+    font-family: Verdana;
+    padding: 20px;
+    color: black;
+    margin-left: 45px;
+}
+
+
+
 .coffeeList {
     text-align: left;
     padding: 45px;

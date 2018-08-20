@@ -89,9 +89,10 @@
         <div>
             {% load static %}
             {% if coffee_list %}
+
             <ul class="coffeeList">
                 {% for capsule in coffee_list %}
-                    <li><a href="{% url 'payment' capsule.id %}">{{ capsule.coffeeType }}</a></li>
+                    <li><a href="{% url 'payment' capsule.coffeeType %}">{{ capsule.coffeeType }}</a> {{ capsule.quantity }}</li>
                 {% endfor %}
             </ul>
             {% else %}

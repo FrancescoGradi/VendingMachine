@@ -3,11 +3,12 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
+from django.db.models import Count
 
 from .models import CoffeeCapsule
 
 # Semplice esempio
-
+'''
 class IndexView(generic.ListView):
     template_name = 'coffee/index.html'
     context_object_name = 'coffee_list'
@@ -15,18 +16,18 @@ class IndexView(generic.ListView):
     # Ritorna la lista dei caffe'
     def get_queryset(self):
         return CoffeeCapsule.objects.order_by('additionDate')[0:]
-
-'''class PaymentView(generic.ListView):
-    template_name = 'coffee/payment.html'
+'''
+class IndexView(generic.ListView):
+    template_name = 'coffee/index.html'
     context_object_name = 'coffee_list'
 
+    # Ritorna la lista dei caffe'
     def get_queryset(self):
-        return CoffeeCapsule.objects.order_by('additionDate')[0:]
-'''
+        return CoffeeCapsule.objects.values('coffeeType').annotate(quantity=Count('coffeeType'))
 
-def payment(request, coffeeCapsule_id):
-    capsule = get_object_or_404(CoffeeCapsule, pk=coffeeCapsule_id)
-    return render(request, 'coffee/payment.html', {'capsule': capsule})
+def payment(request, coffeeType):
+    capsules = CoffeeCapsule.objects.filter(coffeeType=coffeeType).order_by('additionDate')
+    return render(request, 'coffee/payment.html', {'capsule': capsules[0]})
 
 def about(request):
     return render(request, 'coffee/about.html')
@@ -42,9 +43,17 @@ def pay(request):
 
         coffee_type_list = CoffeeCapsule.objects.filter(coffeeType=coffee_type)
         coffee_type_list.order_by('additionDate')
-        coffee_type_list[0].delete()
 
-        # TODO il codice per far funzionare i motori dovrebbe essere inserito qui
-        print ("Crick Crick Crick")
+        if coffee_type_list[0].deleteOneCapsule():
 
-    return HttpResponseRedirect(reverse('index'))
+            # TODO il codice per far funzionare i motori dovrebbe essere inserito qui
+            print("Crick Crick Crick")
+
+            return HttpResponseRedirect(reverse('index'))
+
+        else:
+            print("Quantity error.")
+            return HttpResponseRedirect(reverse('index'))
+
+
+
