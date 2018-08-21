@@ -86,17 +86,21 @@
             </ul>
         </div>
 
-        <div>
+        <div class="container-fluid">
             {% load static %}
             {% if coffee_list %}
 
-            <ul class="coffeeList">
+            <ul class="list-group">
                 {% for capsule in coffee_list %}
-                    <li><a href="{% url 'payment' capsule.coffeeType %}">{{ capsule.coffeeType }}</a> {{ capsule.quantity }}</li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a class="nounderline" href="{% url 'payment' capsule.coffeeType %}">
+                            {{ capsule.coffeeType }}
+                        </a> <span class="badge badge-primary badge-pill">{{ capsule.quantity }}</span>
+                    </li>
                 {% endfor %}
             </ul>
             {% else %}
-            <ul class="coffeeList">Non ci sono cialde disponibili</ul>
+            <ul class="list-group-item-warning">Non ci sono cialde disponibili</ul>
             {% endif %}
         </div>
 

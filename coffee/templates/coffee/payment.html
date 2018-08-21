@@ -16,22 +16,21 @@
 </head>
 
 <body>
-<body background="{% static '/coffee/image/sfondo1.jpg' %}"></body>
 
-<form action="{% url 'pay' %}" method="post">
+<form action="{% url 'loginPage' capsule.coffeeType %}" method="post">
     {% csrf_token %}
 
     <h1>Sei sicuro di voler pagare?</h1>
-    <div class="paymentcss">Hai scelto <br>{{ capsule }}, prezzo {{ capsule.coffeePrice }}, origine {{ capsule.coffeeOrigin }}</div>
 
-    <h5>Description: </h5>
-    <p>{{ capsule.coffeeDescription }}</p>
-
-    <div class="input-group">
-        <div class="input-group-prepend">
+    <div class="container-fluid">
+        <div class="paymentcss">Hai scelto <br>{{ capsule }}, prezzo {{ capsule.coffeePrice }} €, origine {{ capsule.coffeeOrigin }}
+            <h5>Description: </h5>
+            <p>{{ capsule.coffeeDescription }}</p>
+        </div>
+        <div class="paymentcss">
             <input type="submit" class="btn-warning btn-lg" name="coffeeType" value={{ capsule.coffeeType }}>
             <button type="button" class="btn-secondary btn-lg">
-                <a class="btn-secondary btn-lg" href="{% url 'index' %}" role="button ">
+                <a class="nounderline" href="{% url 'index' %}">
                     Annulla
                 </a>
             </button>
@@ -41,4 +40,5 @@
 </form>
 
 </body>
+
 </html>
