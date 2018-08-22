@@ -12,7 +12,7 @@ class CoffeeCapsule(models.Model):
 
     # il campo id e' creato automaticamente ed e' reso chiave primaria
     # i seguenti campi sono spunti soggetti a modifiche o cancellazioni
-    coffeeOrigin = models.CharField('Origin', max_length=25)
+
     coffeeType = models.CharField('Type', choices=COFFEE_CHOICES, max_length=25)
     additionDate = models.DateTimeField('addition date', default=timezone.now)
     expirationDate = models.DateTimeField('expiration date')
@@ -44,10 +44,10 @@ class CoffeeCapsule(models.Model):
 
     # Crea capsule multiple
     @classmethod
-    def create(cls, coffeeOrigin, coffeeType, expirationDate, coffeeDescription, coffeePrice, number):
+    def create(cls, coffeeType, expirationDate, coffeeDescription, coffeePrice, number):
         capsules = list()
         for i in range(number):
-            capsules.append(CoffeeCapsule(coffeeOrigin=coffeeOrigin, coffeeType=coffeeType, expirationDate=expirationDate,
+            capsules.append(CoffeeCapsule(coffeeType=coffeeType, expirationDate=expirationDate,
                                           coffeeDescription=coffeeDescription, coffeePrice=coffeePrice))
         return capsules
 
