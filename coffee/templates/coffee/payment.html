@@ -5,24 +5,40 @@
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     <meta charset="UTF-8">
     <title>Pagamento</title>
+
+    {% load static %}
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static '/coffee/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+    <link href="{% static '/coffee/css/custom.css' %}" rel="stylesheet">
+
 </head>
 
 <body>
-<form action="{% url 'pay' %}" method="post">
+
+<form action="{% url 'loginPage' capsule.coffeeType %}" method="post">
     {% csrf_token %}
 
-    <h3>Sei sicuro di voler pagare?</h3>
-    <p>Hai scelto <br>{{ capsule }} </p>
+    <h1>Sei sicuro di voler pagare?</h1>
 
-    <div>
-        <input type="submit" name="coffeeType" value={{ capsule.coffeeType }}>
-        <button type="reset">
-            <a href="{% url 'index' %}">Annulla
-            </a>
-        </button>
+    <div class="container-fluid">
+        <div class="paymentcss">Hai scelto <br>{{ capsule }}, prezzo {{ capsule.coffeePrice }} €
+            <h5>Description: </h5>
+            <p>{{ capsule.coffeeDescription }}</p>
+        </div>
+        <div class="paymentcss">
+            <input type="submit" class="btn-warning btn-lg" name="coffeeType" value={{ capsule.coffeeType }}>
+            <button type="button" class="btn-secondary btn-lg">
+                <a class="nounderline" href="{% url 'index' %}">
+                    Annulla
+                </a>
+            </button>
+        </div>
     </div>
 
 </form>
 
 </body>
+
 </html>

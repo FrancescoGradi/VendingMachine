@@ -27,18 +27,6 @@
         <![endif]-->
         <!-- Fine Copiato da Ferracane -->
 
-        <script type="text/javascript">
-            function show_alert() {
-                if(shoppingCart.countCart() > 0) {
-
-                    if(confirm("Sei sicuro dei tuoi acquisti?")) {
-                        shoppingCart.paymentOk();
-                        displayCart();
-                    }
-                }
-            }
-        </script>
-
     </head>
 
     <body background="{% static '/coffee/image/sfondo1.jpg' %}"></body>
@@ -82,32 +70,39 @@
 
 
         <h1>Ordine Caff&eacute;</h1>
-            <div>
-                <ul id="list">
-                    <ul>
-                        <div id="tendina">
-                            {% load static %}
-                            {% if coffee_list %}
-                                <select name="coffeeType">
-                                    <option>Seleziona Tipo</option>
-                                    {%  for capsule in coffee_list %}
-                                        <div id={{ capsule.coffeeType }}>{{ capsule.coffeeType }}</div>
-                                        <option value={{ capsule.coffeType }}>{{ capsule.coffeeType }}</option>
-                                    {% endfor %}
-                                </select>
-                            {% endif %}
-                        </div>
-                        <button type="button" id="add-to-cart-coffee"> Aggiungi al Carrello </button>
-                    </ul>
-                    <ul>
-                        <div>Hai <span id="count-cart">X</span> oggetti nel carrello</div>
-                        <div>Totale Carrello:&euro;<span id="total-cart"></span></div>
-                        <div>Totale Disponibile: <span id="total-disp"></span></div>
-                        <button type="button" id="clear-cart">Svuota Carrello</button>
-                        <button type="button" onclick="show_alert()" id="payment">Paga</button>
-                    </ul>
+        <div>
+            <ul id="list">
+                <ul>
+                    <a href="#" data-name="Caffé Lavazza" data-price="0.5">Caff&eacute; Lavazza &euro; 0.50</a>
+                    <button type="button" id="add-to-cart-coffee"> Aggiungi al Carrello </button>
                 </ul>
-            </div>
+                <ul>
+                    <div>Hai <span id="count-cart">X</span> oggetti nel carrello</div>
+                    <div>Totale Carrello:&euro;<span id="total-cart"></span></div>
+                    <div>Totale Disponibile: <span id="total-disp"></span></div>
+                    <button type="button" id="clear-cart">Svuota Carrello</button>
+                    <button type="button" id="payment">Paga</button>
+                </ul>
+            </ul>
+        </div>
+
+        <div class="container-fluid">
+            {% load static %}
+            {% if coffee_list %}
+
+            <ul class="list-group">
+                {% for capsule in coffee_list %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <a class="nounderline" href="{% url 'payment' capsule.coffeeType %}">
+                            {{ capsule.coffeeType }}
+                        </a> <span class="badge badge-primary badge-pill">{{ capsule.coffeeQuantity }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <ul class="list-group-item-warning">Non ci sono cialde disponibili</ul>
+            {% endif %}
+        </div>
 
         <script src="{% static '/coffee/js/shoppingCart.js' %}"></script>
 
@@ -137,13 +132,21 @@
                 displayCart();
             });
 
-            /*$("#payment").click(function(event){
+            $("#payment").click(function(event){
                 shoppingCart.paymentOk();
                 displayCart();
-            });*/
+            });
 
             function displayCart() {
                 var cartArray = shoppingCart.listCart();
+
+                {% load static %}
+                {% if coffee_list %}
+                    var max = {{ coffee_list.count }};
+                {% else %}
+                    var max = 0
+                {% endif %}
+
                 console.log(cartArray);
                 var output = "";
 
