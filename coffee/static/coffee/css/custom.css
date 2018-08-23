@@ -22,11 +22,66 @@ h1 {
     color: chocolate;
 }
 
-.navbar-brand{
+.navbar-brand {
     font-size: 170%;
     padding: 12px 15px 0 28px;
     background-image: url(../image/download.jpeg);
     background-repeat: no-repeat;
     background-size: 26px 23px;
     background-position: 0 12px;
+}
+
+div#tendina {
+    width: 15%;
+    float: left;
+    margin: 0;
+    padding: 0;
+    background: none;
+}
+
+div#tendina ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+div#tendina li {
+    width:100px;
+    float:left;
+    margin: 0;
+    padding: 0;
+}
+
+div#tendina a {
+    display: block;
+    padding: 5px;
+    color: #000;
+    text-decoration: none;
+}
+
+div#tendina a:hover {
+    background-color: #000033;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+div#tendina li ul {
+    display: none
+}
+
+div#tendina li:hover ul {
+    display: block;
+    position: absolute;
+    z-index:1;
+    width:150px;
+    padding: 0;
+    margin: 0 0 0 -1px;
+    background: white;
+}
+
+div#tendina li li {
+    border:none; width:150px;
+}
+div#tendina li li a {
+    padding:2px 2px 2px 10px;
 }
