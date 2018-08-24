@@ -1,4 +1,4 @@
-import RPi.GPIO as io
+"""import RPi.GPIO as io
 import time
 
 # Impostazioni generali per disposizione pin e visualizzazione di warning selativi ai pin
@@ -33,7 +33,7 @@ def moveStorage2():
     motorStorage2.stop()
 
 def moveMechaArm():
-    """Ancora abbastanza sperimentale in realtà: appena abbiamo la macchina costruita ci farò delle prove."""
+    # Ancora abbastanza sperimentale in realtà: appena abbiamo la macchina costruita ci farò delle prove.
     motorMechaArm.start(2.5)
     time.sleep(1)
     motorMechaArm.ChangeDutyCycle(12.5)
@@ -43,4 +43,4 @@ def moveMechaArm():
     motorMechaArm.start(12.5)
     time.sleep(1)
     motorMechaArm.ChangeDutyCycle(2.5)
-    motorMechaArm.stop()
+    motorMechaArm.stop()"""

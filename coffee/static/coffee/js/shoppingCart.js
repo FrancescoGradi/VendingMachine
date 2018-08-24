@@ -25,14 +25,23 @@ var shoppingCart = (function () {
         }
     }
 
+    function collectData() {
+
+    }
+
     loadCart();
 
     // Public methods and properties
     var obj = {};
 
     obj.paymentOk = function(){
-        max -= this.countCart();
-        cart = [];
+        if(max - this.countCart() >= 0) {
+            max -= this.countCart();
+            cart = [];
+        }
+        else {
+            alert("Numero di prodotti selezionati non disponibili.");
+        }
     };
     obj.addItemToCart = function (name, price, count) {
         for (var i in cart) {
