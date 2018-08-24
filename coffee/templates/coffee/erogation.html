@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Erogation...</title>
+
+
+    {% load static %}
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static '/coffee/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+    <link href="{% static '/coffee/css/custom.css' %}" rel="stylesheet">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script src="{% static '/coffee/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/coffee/js/shoppingCart.js' %}"></script>
+
+</head>
+<body>
+
+    <h2>Waiting...</h2>
+
+
+    <script>
+
+        var i = 0;
+        var waitingTime = 50
+
+        var counter = setInterval(function () {
+            i++;
+            if (i > 0) {
+                $('.progress-bar').css('width', i + '%');
+            }
+            else {
+                redirect(i);
+                clearInterval(counter);
+            }
+
+        }, waitingTime);
+
+        var timer = setTimeout(function() {
+            alert("Success\nThanks");
+            window.location='{% url 'index' %}'
+        }, waitingTime * 125);
+
+    </script>
+
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+        <span class="sr-only"></span>
+      </div>
+    </div>
+
+</body>
+</html>

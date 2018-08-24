@@ -49,7 +49,7 @@ def pay(request, coffeeType):
                 # TODO il codice per far funzionare i motori dovrebbe essere inserito qui
                 print("Crick Crick Crick")
 
-                return HttpResponseRedirect(reverse('index'))
+                return render(request, 'coffee/erogation.html')
 
             else:
                 print("Quantity error.")
@@ -57,6 +57,6 @@ def pay(request, coffeeType):
         else:
             return HttpResponseRedirect(reverse('errorPage'))
 
-
-
-
+def erogation(request, coffeeType):
+    # In futuro potrebbe anche rendere il tempo previsto
+    return render(request, 'coffee/erogation.html')
