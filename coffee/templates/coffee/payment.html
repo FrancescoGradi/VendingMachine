@@ -20,18 +20,18 @@
 <form action="{% url 'loginPage' capsule.coffeeType %}" method="post">
     {% csrf_token %}
 
-    <h1>Sei sicuro di voler pagare?</h1>
+    <h1>Capsule chosen:</h1>
 
     <div class="container-fluid">
-        <div class="paymentcss">Hai scelto <br>{{ capsule }}, prezzo {{ capsule.coffeePrice }} €
+        <div class="paymentcss">{{ capsule }}, price {{ capsule.coffeePrice }} €
             <h5>Description: </h5>
             <p>{{ capsule.coffeeDescription }}</p>
         </div>
         <div class="paymentcss">
-            <input type="submit" class="btn-warning btn-lg" name="coffeeType" value={{ capsule.coffeeType }}>
+            <input type="submit" class="btn-warning btn-lg" name="coffeeType" value="Pay">
             <a class="nounderline" href="{% url 'index' %}">
                 <button type="button" class="btn-secondary btn-lg">
-                        Annulla
+                        Cancel
                 </button>
             </a>
         </div>

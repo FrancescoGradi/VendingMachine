@@ -55,8 +55,10 @@ def pay(request, coffeeType):
                 print("Quantity error.")
                 return HttpResponseRedirect(reverse('errorPage'))
         else:
-            return HttpResponseRedirect(reverse('errorPage'))
+            return render(request, 'coffee/error.html')
 
-def erogation(request, coffeeType):
+'''def erogation(request, coffeeType):
     # In futuro potrebbe anche rendere il tempo previsto
-    return render(request, 'coffee/erogation.html')
+    return render(request, 'coffee/erogation.html')'''
+
+

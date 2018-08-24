@@ -92,11 +92,12 @@
 
             <ul class="list-group">
                 {% for capsule in coffee_list %}
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a class="nounderline" href="{% url 'payment' capsule.coffeeType %}">
-                            {{ capsule.coffeeType }}
-                        </a> <span class="badge badge-primary badge-pill">{{ capsule.coffeeQuantity }}</span>
-                    </li>
+                    <a class="nounderline" href="{% url 'payment' capsule.coffeeType %}">
+                        <button type="button" class="list-group-item">
+                            <font color="#d2691e">{{ capsule.coffeeType }}</font>
+                            <span class="badge badge-primary badge-pill">{{ capsule.coffeeQuantity }}</span>
+                        </button>
+                    </a>
                 {% endfor %}
             </ul>
             {% else %}

@@ -5,6 +5,7 @@ body {
     text-align: left;
     background-size: cover;
     background-repeat: no-repeat;
+    font-family: Verdana;
 }
 
 h1 {
@@ -29,12 +30,17 @@ h1 {
     padding: 45px;
     margin-left: 45px;
     color: chocolate;
+    font-family: Verdana;
 }
 
 .nounderline {
     text-decoration-color: white;
     text-decoration: none !important;
     text-line-through-color: white;
+    color: chocolate;
+}
+
+a:hover {
     color: chocolate;
 }
 
@@ -46,8 +52,10 @@ h1 {
 }
 
 .list-group-item {
+    color: chocolate;
     border-color: chocolate;
     text-line-through-color: chocolate;
+    margin-top: 2%;
 }
 
 .badge-primary {
@@ -72,5 +80,12 @@ h1 {
 }
 
 h2 {
+    color: chocolate;
     text-align: center;
+    font-family: Verdana;
+}
+
+.bar-div {
+    margin-left: 25%;
+    margin-right: 25%;
 }
