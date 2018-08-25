@@ -76,7 +76,6 @@ a:hover {
 }
 
 h2 {
-    color: chocolate;
     text-align: center;
     font-family: Verdana;
 }
@@ -86,14 +85,23 @@ h2 {
     margin-right: 25%;
 }
 
+.table-responsive {
+    padding-top: 1em;
+}
+
+.table {
+    border-color: transparent;
+    text-line-through-color: transparent;
+}
+
 .table-warning {
     background-color: lightyellow;
-    table-border-color-dark: chocolate;
-    table-border-color-light: lightyellow;
+    border-color: transparent;
 }
 
 .alert {
     padding-top: 1em;
     margin-right: auto;
     margin-left: auto;
+    max-width: 90%;
 }
