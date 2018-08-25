@@ -91,3 +91,9 @@ h2 {
     table-border-color-dark: chocolate;
     table-border-color-light: lightyellow;
 }
+
+.alert {
+    padding-top: 1em;
+    margin-right: auto;
+    margin-left: auto;
+}

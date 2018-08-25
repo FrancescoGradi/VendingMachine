@@ -29,8 +29,8 @@ def contact(request):
 def errorPage(request):
     return render(request, 'coffee/error.html')
 
-def loginPage(request, coffeeType):
-    return render(request, 'coffee/login.html', {'coffeeType': coffeeType})
+def loginPage(request, coffeeType, loginFailed = False):
+    return render(request, 'coffee/login.html', {'coffeeType': coffeeType, 'loginFailed': loginFailed})
 
 def pay(request, coffeeType):
     if request.method == 'POST':
@@ -55,7 +55,7 @@ def pay(request, coffeeType):
                 print("Quantity error.")
                 return HttpResponseRedirect(reverse('errorPage'))
         else:
-            return render(request, 'coffee/error.html')
+            return render(request, 'coffee/login.html', {'coffeeType': coffeeType, 'loginFailed': True})
 
 '''def erogation(request, coffeeType):
     # In futuro potrebbe anche rendere il tempo previsto

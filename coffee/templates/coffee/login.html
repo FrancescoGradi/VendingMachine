@@ -12,6 +12,17 @@
     <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
     <link href="{% static '/coffee/css/custom.css' %}" rel="stylesheet">
 
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script src="{% static '/coffee/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/coffee/js/shoppingCart.js' %}"></script>
+    <script src="{% static '/coffee/js/bootbox.min.js' %}"></script>
+    <script src="{% static '/coffee/js/jquery-3.3.1.min.js' %}"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
@@ -22,6 +33,7 @@
 
     <form action="{% url 'pay' coffeeType %}" method="post">
         {% csrf_token %}
+
         <h2>Login</h2>
         <div class="form-group">
             <label for="exampleInputEmail1">Email or User</label>
@@ -40,10 +52,19 @@
                     Cancel
             </button>
         </a>
-
     </form>
-
 </div>
 
+    <div class="alert">
+        {% if loginFailed is True %}
+            <div class="alert alert-danger" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="alert-heading">Something went wrong...</h4>
+                <p>User or password wrong.</p>
+            </div>
+        {% endif %}
+    </div>
 </body>
 </html>
