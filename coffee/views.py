@@ -60,5 +60,3 @@ def pay(request, coffeeType):
 '''def erogation(request, coffeeType):
     # In futuro potrebbe anche rendere il tempo previsto
     return render(request, 'coffee/erogation.html')'''
-
-

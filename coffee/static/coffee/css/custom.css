@@ -1,7 +1,6 @@
 /* CSS Document */
 
 body {
-    padding-top: 50px;
     text-align: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -11,8 +10,7 @@ body {
 h1 {
     text-align: left;
     font-family: Verdana;
-    font-size: 45px;
-    padding: 45px;
+    font-size: 32px;
     color: chocolate;
 }
 
@@ -21,14 +19,11 @@ h1 {
     font-family: Verdana;
     padding: 20px;
     color: black;
-    margin-left: 45px;
-    margin-right: 45px;
 }
 
 .coffeeList {
     text-align: left;
-    padding: 45px;
-    margin-left: 45px;
+    padding: 2em;
     color: chocolate;
     font-family: Verdana;
 }
@@ -45,10 +40,10 @@ a:hover {
 }
 
 .container-fluid {
-    margin-top: 3em;
-    margin-left: 3em;
-    margin-right: 55%;
-    margin-bottom: 3em;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5em;
 }
 
 .list-group-item {
@@ -72,11 +67,12 @@ a:hover {
 }
 
 .login-div {
-  background: #ffffff none repeat scroll 0 0;
-  border-radius: 2px;
-  margin: 10px auto 30px;
-  max-width: 38%;
-  padding: 50px 70px 70px 71px;
+    background: #ffffff none repeat scroll 0 0;
+    border-radius: 2px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2em;
 }
 
 h2 {
@@ -88,4 +84,10 @@ h2 {
 .bar-div {
     margin-left: 25%;
     margin-right: 25%;
+}
+
+.table-warning {
+    background-color: lightyellow;
+    table-border-color-dark: chocolate;
+    table-border-color-light: lightyellow;
 }

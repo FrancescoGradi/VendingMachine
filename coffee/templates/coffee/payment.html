@@ -13,6 +13,8 @@
     <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
     <link href="{% static '/coffee/css/custom.css' %}" rel="stylesheet">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 
 <body>
@@ -20,21 +22,33 @@
 <form action="{% url 'loginPage' capsule.coffeeType %}" method="post">
     {% csrf_token %}
 
-    <h1>Capsule chosen:</h1>
 
     <div class="container-fluid">
-        <div class="paymentcss">{{ capsule }}, price {{ capsule.coffeePrice }} €
-            <h5>Description: </h5>
-            <p>{{ capsule.coffeeDescription }}</p>
+        <h1>Capsule chosen:</h1>
+
+        <div class="table-responsive">
+            <table class="table">
+                <tr class="table-warning">
+                    <td class="table-warning"><b>Type</b></td>
+                    <td class="table-warning"><b>Price</b></td>
+                </tr>
+                <tr>
+                    <td>{{ capsule }}</td>
+                    <td>{{ capsule.coffeePrice }} €</td>
+                </tr>
+            </table>
         </div>
-        <div class="paymentcss">
-            <input type="submit" class="btn-warning btn-lg" name="coffeeType" value="Pay">
-            <a class="nounderline" href="{% url 'index' %}">
-                <button type="button" class="btn-secondary btn-lg">
-                        Cancel
-                </button>
-            </a>
-        </div>
+
+        <h5><b>Description: </b></h5>
+        <p>{{ capsule.coffeeDescription }}</p>
+
+        <input type="submit" class="btn-warning btn-lg" name="coffeeType" value="Pay">
+        <a class="nounderline" href="{% url 'index' %}">
+            <button type="button" class="btn-secondary btn-lg">
+                    Cancel
+            </button>
+        </a>
+
     </div>
 
 </form>

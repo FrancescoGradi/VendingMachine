@@ -23,6 +23,8 @@
     <script src="{% static '/coffee/js/bootbox.min.js' %}"></script>
     <script src="{% static '/coffee/js/jquery-3.3.1.min.js' %}"></script>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
     <script>
@@ -42,20 +44,33 @@
         }, waitingTime);
 
         var timer = setTimeout(function() {
-             alert("Success");
-             window.location.href = "{% url 'index' %}"
+            alert("Erogation finished");
+            window.location.href = "{% url 'index' %}"
         }, waitingTime * 121);
 
     </script>
 
-    <h2>Waiting...</h2>
     <div class="bar-div">
+        <h2>Waiting...</h2>
+        <br>
         <div class="progress">
           <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
             <span class="sr-only"></span>
           </div>
         </div>
     </div>
+
+    <div class="container-fluid">
+        <div id="success" class="alert alert-success show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="alert-heading">Well done!</h4>
+            <p>Your purchase has been successful.</p>
+        </div>
+    </div>
+
+
 
 </body>
 </html>
