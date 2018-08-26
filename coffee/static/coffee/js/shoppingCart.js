@@ -1,12 +1,6 @@
 
 var shoppingCart = (function () {
     var cart = [];
-    {% load static %}
-    {% if coffee_list %}
-        var max = {{ len(coffee_list) }};
-    {% else %}
-        var max = 20
-    {% endif %}
 
     function Item(name, price, count) {
         this.name = name

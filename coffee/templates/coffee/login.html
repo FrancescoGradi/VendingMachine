@@ -28,6 +28,14 @@
 </head>
 
 <body>
+    <script>
+        $(document).ready (function(){
+            $("#loginFailed").fadeTo(2000, 500).slideUp(500, function(){
+                $("#loginFailed").slideUp(500);
+            });
+        });
+    </script>
+
 
 <div class="login-div">
 
@@ -57,7 +65,7 @@
 
     <div class="alert">
         {% if loginFailed is True %}
-            <div class="alert alert-danger" role="alert">
+            <div id="loginFailed" class="alert alert-danger" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

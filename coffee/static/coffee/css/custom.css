@@ -77,6 +77,11 @@ a:hover {
         padding-top: 2em;
         max-width: 85%;
     }
+
+    .bar-div {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
 }
 
 @media only screen and (min-width: 799px) {
@@ -88,17 +93,17 @@ a:hover {
         padding-top: 2em;
         max-width: 25%;
     }
+
+    .bar-div {
+        margin-left: 30%;
+        margin-right: 30%;
+    }
 }
 
 h2 {
     text-align: center;
     color: chocolate;
     font-family: Verdana;
-}
-
-.bar-div {
-    margin-left: 20%;
-    margin-right: 20%;
 }
 
 .table-responsive {
