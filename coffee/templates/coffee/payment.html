@@ -78,9 +78,11 @@
             </table>
         </div>
 
-        <h5><b>Description: </b></h5>
-        <p>{{ capsule.coffeeDescription }}</p>
-        <br>
+        <div class="panel panel-warning">
+            <div class="panel-heading"><h5><b><font color="black">Description: </font></b></h5></div>
+            <div class="panel-body"><p>{{ capsule.coffeeDescription }}</p></div>
+        </div>
+
         <input type="submit" class="btn-warning btn-lg" name="coffeeType" value="Pay">
         <a class="nounderline" href="{% url 'index' %}">
             <button type="button" class="btn-secondary btn-lg">
