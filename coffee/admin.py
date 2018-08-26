@@ -2,22 +2,21 @@ from django.contrib import admin
 
 from .models import CoffeeCapsule
 
-def multipleInsert10(modeladmin, request, queryset):
-    capsule = queryset[0]
-    capsules = CoffeeCapsule.create(coffeeType=capsule.coffeeType, coffeeDescription=capsule.coffeeDescription,
-                                    coffeePrice=capsule.coffeePrice, expirationDate=capsule.expirationDate, number=10)
-    for capsule in capsules:
-        capsule.save()
+def add10(modeladmin, request, queryset):
+    for capsule in queryset:
+        capsule.addQuantity(10)
 
-def multipleInsert100(modeladmin, request, queryset):
-    capsule = queryset[0]
-    capsules = CoffeeCapsule.create(coffeeType=capsule.coffeeType, coffeeDescription=capsule.coffeeDescription,
-                                    coffeePrice=capsule.coffeePrice, expirationDate=capsule.expirationDate, number=100)
-    for capsule in capsules:
-        capsule.save()
+def add100(modeladmin, request, queryset):
+    for capsule in queryset:
+        capsule.addQuantity(100)
 
-multipleInsert10.short_description = "Insert 10 multiple istances"
-multipleInsert100.short_description = "Insert 100 multiple istances"
+def emptyCapsules(modeladmin, request, queryset):
+    for capsule in queryset:
+        capsule.empty()
+
+add10.short_description = "Add 10 capsules"
+add100.short_description = "Add 100 capsules"
+emptyCapsules.short_description = "Empty capsules"
 
 class InsertCapsuleAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -30,6 +29,6 @@ class InsertCapsuleAdmin(admin.ModelAdmin):
     ]
 
     list_display = ('id', 'coffeeType', 'coffeeDescription', 'coffeePrice', 'coffeeQuantity', 'additionDate', 'expirationDate', 'isExpired')
-    actions = [multipleInsert10, multipleInsert100]
+    actions = [add10, add100, emptyCapsules]
 
 admin.site.register(CoffeeCapsule, InsertCapsuleAdmin)

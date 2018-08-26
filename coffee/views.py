@@ -44,7 +44,11 @@ def pay(request, coffeeType):
             coffee_type_list = CoffeeCapsule.objects.filter(coffeeType=coffeeType)
             coffee_type_list.order_by('additionDate')
 
-            if coffee_type_list[0].deleteOneCapsule():
+            isLast = False
+            if len(coffee_type_list) is 1:
+                isLast = True
+
+            if coffee_type_list[0].deleteOneCapsule(isLast):
 
                 # TODO il codice per far funzionare i motori dovrebbe essere inserito qui
                 print("Crick Crick Crick")
@@ -52,8 +56,7 @@ def pay(request, coffeeType):
                 return render(request, 'coffee/erogation.html')
 
             else:
-                print("Quantity error.")
-                return HttpResponseRedirect(reverse('errorPage'))
+                return pay(request, coffeeType)
         else:
             return render(request, 'coffee/login.html', {'coffeeType': coffeeType, 'loginFailed': True})
 

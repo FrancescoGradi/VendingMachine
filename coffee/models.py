@@ -31,14 +31,21 @@ class CoffeeCapsule(models.Model):
         else:
             return True
 
-    def deleteOneCapsule(self):
-        if self.coffeeQuantity == 1:
+    def deleteOneCapsule(self, isLast):
+        if self.coffeeQuantity == 1 and isLast:
+            self.coffeeQuantity = 0
+            self.save()
+            return True
+        elif self.coffeeQuantity == 1 and not isLast:
             self.delete()
             return True
         elif self.coffeeQuantity > 1:
             self.coffeeQuantity -= 1
             self.save()
             return True
+        elif self.coffeeQuantity == 0:
+            self.delete()
+            return False
         else:
             return False
 
@@ -50,6 +57,14 @@ class CoffeeCapsule(models.Model):
             capsules.append(CoffeeCapsule(coffeeType=coffeeType, expirationDate=expirationDate,
                                           coffeeDescription=coffeeDescription, coffeePrice=coffeePrice))
         return capsules
+
+    def addQuantity(self, number):
+        self.coffeeQuantity += number
+        self.save()
+
+    def empty(self):
+        self.coffeeQuantity = 0
+        self.save()
 
 
 

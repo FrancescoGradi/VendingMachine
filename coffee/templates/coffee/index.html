@@ -88,19 +88,26 @@
 
         <div class="container-fluid">
 
-            <h1>Ordine Caff&eacute;</h1>
+            <h1>Coffee order</h1>
 
             {% load static %}
             {% if coffee_list %}
 
             <ul class="list-group">
                 {% for capsule in coffee_list %}
-                    <a class="nounderline" href="{% url 'payment' capsule.coffeeType %}">
-                        <button type="button" class="list-group-item">
-                            <font color="#d2691e">{{ capsule.coffeeType }}</font>
-                            <span class="badge badge-primary badge-pill">{{ capsule.coffeeQuantity }}</span>
+                    {% if capsule.coffeeQuantity is 0 %}
+                        <button type="button" class="list-group-item disabled">
+                            <font color="#808080">{{ capsule.coffeeType }}</font>
+                            <span class="badge badge-primary badge-pill">No available</span>
                         </button>
-                    </a>
+                    {% else %}
+                        <a class="nounderline" href="{% url 'payment' capsule.coffeeType %}">
+                            <button type="button" class="list-group-item">
+                                <font color="#d2691e">{{ capsule.coffeeType }}</font>
+                                <span class="badge badge-primary badge-pill">{{ capsule.coffeeQuantity }}</span>
+                            </button>
+                        </a>
+                    {% endif %}
                 {% endfor %}
             </ul>
             {% else %}
