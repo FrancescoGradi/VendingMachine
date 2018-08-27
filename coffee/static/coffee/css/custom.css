@@ -163,9 +163,13 @@ h3 {
 
 h4{
     text-align: left;
-    font-family: Verdana;
+    font-family: Antipasto;
     font-size: 18px;
     color: #6F4827;
+}
+
+#number{
+    font-family: Times;
 }
 
 .table-responsive {
