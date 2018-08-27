@@ -26,7 +26,6 @@
     <!-- Fine Copiato da Ferracane -->
     <title>Contact</title>
 </head>
-
 <body background="{% static '/coffee/image/sfondo1.jpg' %}"></body>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -54,23 +53,23 @@
                     <a href="{% url 'contact' %}">Contact</a>
                 </li>
             </ul>
-            <!---<ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>-->
+
         </div>
     </div>
 </nav>
 
 <div class="container-fluid">
-    <h1>CONTATTI </h1>
-    <h2> Per informazioni contattare </h2>
-    <ul>
-        <li> <b>Francesco Gradi</b>  francesco.gradi@stud.unifi.it</li>
-        <li> <b>Federico M&aacute;lato</b>  federico.malato@stud.unifi.it </li>
-        <li> <b>Jody Ciappelli</b>  jody.ciappelli@stud.unifi.it </li>
-    </ul>
+    <div class="panel panel-warning" >
+        <div class="panel-heading">
+            <h1> CONTATTI </h1>
+        </div>
+        <div id="panel-index-body" class="panel-body"
+                <ul>
+                    <li id="mail" class="list-group-item"> <b>Francesco Gradi</b>  francesco.gradi@stud.unifi.it</li>
+                    <li id="mail" class="list-group-item"> <b>Federico M&aacute;lato</b>  federico.malato@stud.unifi.it </li>
+                    <li id="mail" class="list-group-item"> <b>Jody Ciappelli</b>  jody.ciappelli@stud.unifi.it </li></ul>
+        </div>
+        </div>
 </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>

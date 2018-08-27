@@ -5,6 +5,11 @@
     src: url("../fonts/Antipasto-RegularTrial.ttf");
 }
 
+@font-face {
+    font-family: "Antipasto-light";
+    src: url("../fonts/Antipasto-ExtraLightTrial.ttf");
+}
+
 body {
     text-align: left;
     background-size: cover;
@@ -18,6 +23,22 @@ h1 {
     font-family: Antipasto, Times, Serif;
     font-size: 32px;
     color: #6F4827;
+}
+
+#mail{
+    font-family: Verdana
+}
+
+#name{
+    font-family: Antipasto;
+    font-size: 170%;
+    padding: 11px 15px 0 28px;
+    background-image: url(../image/chiccocioccolato.png);
+    background-repeat: no-repeat;
+    background-size: 26px 23px;
+    background-position: 0 12px;
+    margin-left: 0.5em;font-size: 30px;
+    color: chocolate ;
 }
 
 .paymentcss {
@@ -132,6 +153,19 @@ h2 {
     text-align: center;
     color: #6F4827;
     font-family: Antipasto, Times, Serif;
+}
+
+h3 {
+    text-align: left;
+    color: chocolate;
+    font-family: Verdana;
+}
+
+h4{
+    text-align: left;
+    font-family: Verdana;
+    font-size: 18px;
+    color: #6F4827;
 }
 
 .table-responsive {
