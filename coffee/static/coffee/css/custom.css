@@ -1,22 +1,28 @@
 /* CSS Document */
 
+@font-face {
+    font-family: "Antipasto";
+    src: url("../fonts/Antipasto-RegularTrial.ttf");
+}
+
 body {
     text-align: left;
     background-size: cover;
     background-repeat: no-repeat;
-    font-family: Verdana;
+    font-family: Antipasto, Times, Serif;
+    font-size: large;
 }
 
 h1 {
     text-align: left;
-    font-family: Verdana;
+    font-family: Antipasto, Times, Serif;
     font-size: 32px;
     color: #6F4827;
 }
 
 .paymentcss {
     text-align: left;
-    font-family: Verdana;
+    font-family: Antipasto, Times, Serif;
     padding: 20px;
     color: black;
 }
@@ -25,7 +31,7 @@ h1 {
     text-align: left;
     padding: 2em;
     color: #6F4827;
-    font-family: Verdana;
+    font-family: Antipasto, Times, Serif;
 }
 
 .nounderline {
@@ -50,21 +56,13 @@ a:hover {
 
 .badge-primary {
     background-color: #6F4827;
-    margin-top: 4px;
     margin-right: auto;
     float: right;
+    font-family: Times;
+    font-size: medium;
 }
 
-.navbar-brand{
-    font-size: 170%;
-    padding: 14px 15px 0 28px;
-    background-image: url(../image/download.png);
-    background-repeat: no-repeat;
-    background-size: 26px 23px;
-    background-position: 0 12px;
-}
-
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 799px) {
     .login-div {
         background: #ffffff none repeat scroll 0 0;
         border-radius: 2px;
@@ -83,11 +81,21 @@ a:hover {
         max-width: 95%;
         margin-left: auto;
         margin-right: auto;
-        padding-top: 6em;
+        padding-top: 5em;
+    }
+
+    .navbar-brand{
+        font-size: 170%;
+        padding: 17px 15px 0 28px;
+        background-image: url(../image/download.png);
+        background-repeat: no-repeat;
+        background-size: 26px 23px;
+        background-position: 0 12px;
+        margin-left: 0.5em;
     }
 }
 
-@media only screen and (min-width: 799px) {
+@media only screen and (min-width: 800px) {
     .login-div {
         background: #ffffff none repeat scroll 0 0;
         border-radius: 2px;
@@ -108,12 +116,22 @@ a:hover {
         margin-right: auto;
         padding-top: 6em;
     }
+
+    .navbar-brand{
+        font-size: 170%;
+        padding: 18px 15px 0 28px;
+        background-image: url(../image/download.png);
+        background-repeat: no-repeat;
+        background-size: 26px 23px;
+        background-position: 0 12px;
+        margin-left: 25%;
+    }
 }
 
 h2 {
     text-align: center;
     color: #6F4827;
-    font-family: Verdana;
+    font-family: Antipasto, Times, Serif;
 }
 
 .table-responsive {
@@ -164,5 +182,13 @@ h2 {
     color: #6F4827;
     float: right;
     margin-right: 2em;
+    font-family: Times;
 }
 
+#paymentPriceId {
+    font-family: Times;
+}
+
+.navbar-nav {
+    padding-top: 4px;
+}
