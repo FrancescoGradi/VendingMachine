@@ -21,6 +21,9 @@
 
 </head>
 
+    <body background="{% static '/coffee/image/sfondo1.jpg' %}"></body>
+
+
 <body>
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -67,8 +70,8 @@
                     <td class="table-warning"><b>Price</b></td>
                 </tr>
                 <tr>
-                    <td>{{ capsule }}</td>
-                    <td>{{ capsule.coffeePrice }} €</td>
+                    <td class="table-bordered">{{ capsule }}</td>
+                    <td class="table-bordered">{{ capsule.coffeePrice }} €</td>
                 </tr>
             </table>
         </div>

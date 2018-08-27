@@ -62,7 +62,7 @@ a:hover {
 .navbar-brand{
     font-size: 170%;
     padding: 12px 15px 0 28px;
-    background-image: url(../image/download.jpeg);
+    background-image: url(../image/download.png);
     background-repeat: no-repeat;
     background-size: 26px 23px;
     background-position: 0 12px;
@@ -142,4 +142,7 @@ h2 {
     background-color: darkgrey;
 }
 
+.table-bordered {
+    background-color: white;
+}
 
