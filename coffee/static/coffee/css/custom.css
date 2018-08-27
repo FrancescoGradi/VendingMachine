@@ -1,5 +1,7 @@
 /* CSS Document */
 
+{% load static %}
+
 @font-face {
     font-family: "Antipasto";
     src: url("../fonts/Antipasto-RegularTrial.ttf");
@@ -10,14 +12,6 @@
     src: url("../fonts/Antipasto-ExtraLightTrial.ttf");
 }
 
-body {
-    text-align: left;
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-family: Antipasto, Times, Serif;
-    font-size: large;
-}
-
 h1 {
     text-align: left;
     font-family: Antipasto, Times, Serif;
@@ -25,8 +19,10 @@ h1 {
     color: #6F4827;
 }
 
+
 #mail{
-    font-family: Verdana
+    font-family: Verdana;
+    text-align: left;
 }
 
 #name{
@@ -85,7 +81,7 @@ a:hover {
 
 @media only screen and (max-width: 799px) {
     .login-div {
-        background: #ffffff none repeat scroll 0 0;
+        background: white;
         border-radius: 2px;
         margin-left: auto;
         margin-right: auto;
@@ -96,6 +92,7 @@ a:hover {
     .bar-div {
         margin-left: 5%;
         margin-right: 5%;
+        font-family: Antipasto;
     }
 
     .container-fluid {
@@ -114,21 +111,34 @@ a:hover {
         background-position: 0 12px;
         margin-left: 0.5em;
     }
+
+    body {
+        text-align: left;
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-family: Antipasto, Times, Serif;
+        font-size: large;
+        background-image: url("../image/background-mobile.jpg");
+        background-attachment: fixed;
+    }
 }
 
 @media only screen and (min-width: 800px) {
     .login-div {
-        background: #ffffff none repeat scroll 0 0;
+        background: white;
         border-radius: 2px;
         margin-left: auto;
         margin-right: auto;
         padding-top: 2em;
         max-width: 25%;
+        font-family: Antipasto;
+        font-size: large;
     }
 
     .bar-div {
         margin-left: 30%;
         margin-right: 30%;
+        font-family: Antipasto;
     }
 
     .container-fluid {
@@ -147,29 +157,21 @@ a:hover {
         background-position: 0 12px;
         margin-left: 25%;
     }
+
+    body {
+        text-align: left;
+        background-size: cover;
+        background-repeat: no-repeat;
+        font-family: Antipasto, Times, Serif;
+        font-size: large;
+        background-image: url("../image/sfondo1.jpg");
+    }
 }
 
 h2 {
     text-align: center;
     color: #6F4827;
     font-family: Antipasto, Times, Serif;
-}
-
-h3 {
-    text-align: left;
-    color: chocolate;
-    font-family: Verdana;
-}
-
-h4{
-    text-align: left;
-    font-family: Antipasto;
-    font-size: 18px;
-    color: #6F4827;
-}
-
-#number{
-    font-family: Times;
 }
 
 .table-responsive {
@@ -229,4 +231,16 @@ h4{
 
 .navbar-nav {
     padding-top: 4px;
+}
+
+#loginBody {
+    background: white;
+}
+
+#erogationBody {
+    background: white;
+}
+
+#number {
+    font-family: Times;
 }
