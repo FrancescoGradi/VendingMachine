@@ -14,7 +14,7 @@ class IndexView(generic.ListView):
 
     # Ritorna la lista dei caffe', raggruppata in base al tipo, con quantità sommate
     def get_queryset(self):
-        return CoffeeCapsule.objects.all().values('coffeeType').annotate(coffeeQuantity=Sum('coffeeQuantity'))
+        return CoffeeCapsule.objects.all().values('coffeeType', 'coffeePrice').annotate(coffeeQuantity=Sum('coffeeQuantity'))
 
 def payment(request, coffeeType):
     capsules = CoffeeCapsule.objects.filter(coffeeType=coffeeType).order_by('additionDate')

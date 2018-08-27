@@ -4,10 +4,10 @@ from django.utils import timezone
 class CoffeeCapsule(models.Model):
 
     AMERICAN = 'American'
-    ARABIAN = 'Arabian'
+    ARABIC = 'Arabic'
     COFFEE_CHOICES = (
         (AMERICAN, 'American'),
-        (ARABIAN, 'Arabian'),
+        (ARABIC, 'Arabic'),
     )
 
     # il campo id e' creato automaticamente ed e' reso chiave primaria
