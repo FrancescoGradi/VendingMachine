@@ -33,8 +33,22 @@ h1 {
     background-repeat: no-repeat;
     background-size: 26px 23px;
     background-position: 0 12px;
-    margin-left: 0.5em;font-size: 30px;
+    margin-left: 0.5em;
+    font-size: 30px;
     color: chocolate ;
+}
+
+#title{
+    text-align: left;
+    font-family: Antipasto, Times, Serif;
+    font-size: 32px;
+    color: #6F4827;
+    padding: 11px 15px 0 28px;
+    background-image: url(../image/tazza3.png);
+    background-repeat: no-repeat;
+    background-size: 80px 50px;
+    background-position: 200px 0px;
+    margin-left: 0.5em;
 }
 
 .paymentcss {
