@@ -24,6 +24,7 @@ class InsertCapsuleAdmin(admin.ModelAdmin):
         ('CoffeeDescription', {'fields': ['coffeeDescription']}),
         ('CoffeePrice', {'fields': ['coffeePrice']}),
         ('CoffeeQuantity', {'fields': ['coffeeQuantity']}),
+        ('Image', {'fields': ['coffeeImage']}),
         ('AdditionDate', {'fields': ['additionDate']}),
         ('ExpirationDate', {'fields': ['expirationDate']}),
     ]

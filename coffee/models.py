@@ -19,6 +19,7 @@ class CoffeeCapsule(models.Model):
     coffeeDescription = models.TextField('Description', max_length=200, help_text="Insert a brief product description")
     coffeePrice = models.DecimalField('Price', max_digits=4, decimal_places=2, default=0.50)
     coffeeQuantity = models.PositiveSmallIntegerField('Quantity', default=1, editable=True)
+    coffeeImage = models.ImageField(blank=True, null=True)
 
     # Funzione per visualizzare meglio il tutto
     def __str__(self):
