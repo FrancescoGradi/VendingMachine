@@ -4,7 +4,7 @@
 <head>
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     <meta charset="UTF-8">
-    <title>Pagamento</title>
+    <title>Details</title>
 
     {% load static %}
     <!-- Bootstrap Core CSS -->
@@ -79,13 +79,13 @@
                 </table>
 
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-7">
                         <div class="panel panel-warning">
                             <div class="panel-heading"><h5><b><font color="black">Description: </font></b></h5></div>
                             <div class="panel-body"><p>{{ capsule.coffeeDescription }}</p></div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         {% if capsule.coffeeImage != None %}
                             <img id="image" src="{{ capsule.coffeeImage.url }}">
                         {% endif %}
