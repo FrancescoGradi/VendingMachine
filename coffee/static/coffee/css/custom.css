@@ -179,7 +179,7 @@ a:hover {
         background-repeat: no-repeat;
         font-family: Antipasto, Times, Serif;
         font-size: large;
-        background-image: url("../image/sfondo1.jpg");
+        background-image: url("../image/background_desktop.jpg");
     }
 }
 
@@ -246,11 +246,11 @@ h2 {
 }
 
 #loginBody {
-    background: white;
+    background-image: url("../image/background_desktop.jpg");
 }
 
 #erogationBody {
-    background: white;
+    background-image: url("../image/background_desktop.jpg");
 }
 
 #number {
