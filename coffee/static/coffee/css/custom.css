@@ -24,7 +24,9 @@ h1 {
     font-family: Verdana;
     text-align: left;
 }
-
+#signup{
+    alignment: right;
+}
 #name{
     font-family: Antipasto;
     font-size: 170%;
