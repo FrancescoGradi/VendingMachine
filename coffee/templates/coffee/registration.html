@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Registration</title>
 
     {% load static %}
     <!-- Bootstrap Core CSS -->
@@ -24,7 +24,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
-
 <body id="loginBody">
     <script>
         $(document).ready (function(){
@@ -36,38 +35,43 @@
 
 <div class="login-div">
 
-    <form action="{% url 'pay' coffeeType %}" method="post">
+    <form action="{% url 'validateUser' %}" method="post">
         {% csrf_token %}
 
-        <h2><font color="#6F4827">Login</font></h2>
+        <h2><font color="#6F4827">Registration</font></h2>
         <div class="form-group">
-            <label class="label-log" for="exampleInputEmail1">Email or User</label>
+            <label for="exampleInputEmail1">Email or User</label>
             <input type="text" class="form-control" id="exampleInputEmail1" name="user" aria-describedby="emailHelp" placeholder="Enter email">
         </div>
 
         <div class="form-group">
-            <label class="label-log" for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
         </div>
 
-        <button type="submit" class="btn-warning btn-lg">Submit</button>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Confirm password</label>
+            <input type="password" class="form-control" id="confirm_password" name="confirm password" placeholder="Confirm password" required>
+        </div>
 
-        <a class="nounderline" href="{% url 'payment' coffeeType%}">
+        <button type="submit" class="btn-warning btn-lg">Sign up</button>
+
+        <a class="nounderline" href="{% url 'index' %}">
             <button type="button" class="btn-secondary btn-lg">
-                    Cancel
+                Cancel
             </button>
         </a>
     </form>
 </div>
 
     <div class="alert">
-        {% if loginFailed is True %}
+        {% if registrationFailed is True %}
             <div id="loginFailed" class="alert alert-danger" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="alert-heading">Something went wrong...</h4>
-                <p>User or password wrong.</p>
+                <p>Existing user or confirm password wrong.</p>
             </div>
         {% endif %}
     </div>

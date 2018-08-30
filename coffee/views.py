@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.views import generic
 from django.db.models import Sum
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 
 from .models import CoffeeCapsule
 
@@ -31,6 +32,28 @@ def errorPage(request):
 
 def loginPage(request, coffeeType, loginFailed = False):
     return render(request, 'coffee/login.html', {'coffeeType': coffeeType, 'loginFailed': loginFailed})
+
+def registration(request, registrationFailed = False):
+    return render(request, 'coffee/registration.html')
+
+def validateUser(request):
+    if request.method == 'POST':
+        username = request.POST.get('user')
+        password = request.POST.get('password')
+        confirm = request.POST.get('confirm password')
+
+        if User.objects.filter(username='username').exists():
+            if password == confirm:
+                user, created = User.objects.get_or_create(username, password=password)
+                if created:
+                    user.save()
+                    return HttpResponseRedirect(reverse('index'))
+                else:
+                     return render(request, 'coffee/registration.html', {'registrationFailed': True})
+
+        return render(request, 'coffee/registration.html', {'registrationFailed': True})
+    else:
+        return render(request, 'coffee/error.html')
 
 def pay(request, coffeeType):
     if request.method == 'POST':
@@ -59,7 +82,3 @@ def pay(request, coffeeType):
                 return pay(request, coffeeType)
         else:
             return render(request, 'coffee/login.html', {'coffeeType': coffeeType, 'loginFailed': True})
-
-'''def erogation(request, coffeeType):
-    # In futuro potrebbe anche rendere il tempo previsto
-    return render(request, 'coffee/erogation.html')'''

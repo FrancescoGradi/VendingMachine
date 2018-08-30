@@ -3,6 +3,8 @@ from . import views
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
+    path('registration/', views.registration, name='registration'),
+    path('registration/validateUser', views.validateUser, name='validateUser'),
     path('<str:coffeeType>/payment/', views.payment, name='payment'),
     path('<str:coffeeType>/payment/login', views.loginPage, name='loginPage'),
     path('<str:coffeeType>/payment/pay/', views.pay, name='pay'),
