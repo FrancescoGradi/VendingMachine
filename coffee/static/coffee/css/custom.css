@@ -46,7 +46,7 @@ h1 {
     font-size: 32px;
     color: #6F4827;
     padding: 0 0 0 0;
-    background-image: url(../image/tazza3.png);
+    background-image: url(../image/tazza.png);
     background-repeat: no-repeat;
     background-size: 80px 50px;
     background-position: 175px, 0, 20px;
@@ -121,7 +121,7 @@ a:hover {
     .navbar-brand{
         font-size: 170%;
         padding: 17px 15px 0 28px;
-        background-image: url(../image/download.png);
+        background-image: url(../image/chiccobianco.png);
         background-repeat: no-repeat;
         background-size: 26px 23px;
         background-position: 0 12px;
@@ -134,7 +134,7 @@ a:hover {
         background-repeat: no-repeat;
         font-family: Antipasto, Times, Serif;
         font-size: large;
-        background-image: url("../image/background-mobile.jpg");
+        background-image: url("../image/background_desktop_mobile.jpg");
         background-attachment: fixed;
     }
 }
@@ -168,7 +168,7 @@ a:hover {
     .navbar-brand{
         font-size: 170%;
         padding: 18px 15px 0 28px;
-        background-image: url(../image/download.png);
+        background-image: url(../image/chiccobianco.png);
         background-repeat: no-repeat;
         background-size: 26px 23px;
         background-position: 0 12px;
