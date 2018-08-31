@@ -39,12 +39,18 @@ def registration(request, registrationFailed = False):
 def validateUser(request):
     if request.method == 'POST':
         username = request.POST.get('user')
+        name = request.POST.get('name')
+        lastName = request.POST.get('last_name')
         password = request.POST.get('password')
         confirm = request.POST.get('confirm password')
 
-        if User.objects.filter(username='username').exists():
+        print(username + name + lastName + password)
+
+        print
+
+        if not User.objects.filter(username='username').exists():
             if password == confirm:
-                user, created = User.objects.get_or_create(username, password=password)
+                user, created = User.objects.get_or_create(username=username, first_name=name, last_name=lastName, password=password)
                 if created:
                     user.save()
                     return HttpResponseRedirect(reverse('index'))

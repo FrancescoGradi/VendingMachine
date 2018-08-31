@@ -96,7 +96,7 @@ a:hover {
 
 @media only screen and (max-width: 799px) {
     .login-div {
-        background: white;
+        background: transparent;
         border-radius: 2px;
         margin-left: auto;
         margin-right: auto;
@@ -127,6 +127,10 @@ a:hover {
         background-position: 0 12px;
         margin-left: 0.5em;
     }
+    #image {
+        width: 70%;
+        margin-left: 2.5em;
+    }
 
     body {
         text-align: left;
@@ -141,7 +145,7 @@ a:hover {
 
 @media only screen and (min-width: 800px) {
     .login-div {
-        background: white;
+        background: transparent;
         border-radius: 2px;
         margin-left: auto;
         margin-right: auto;
@@ -173,6 +177,11 @@ a:hover {
         background-size: 26px 23px;
         background-position: 0 12px;
         margin-left: 25%;
+    }
+
+    #image {
+        width: 110%;
+        margin-left: 3em;
     }
 
     body {
@@ -262,11 +271,13 @@ h2 {
 .col-lg-7 {
 }
 
-#image {
-    width: 110%;
-    margin-left: 3em;
+#exampleInputEmail1 {
+    font-family: Times;
 }
 
-.label-log {
-    font-family: Antipasto;
+#heading-title {
+    text-align: left;
+    font-family: Antipasto, Times, Serif;
+    font-size: 32px;
+    color: #6F4827;
 }

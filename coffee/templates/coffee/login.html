@@ -38,24 +38,32 @@
     <form action="{% url 'pay' coffeeType %}" method="post">
         {% csrf_token %}
 
-        <h2><font color="#6F4827">Login</font></h2>
-        <div class="form-group">
-            <label class="label-log" for="exampleInputEmail1">Email or User</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" name="user" aria-describedby="emailHelp" placeholder="Enter email">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h1 id="heading-title">LOGIN </h1>
+            </div>
+
+            <div id="panel-index-body" class="panel-body">
+
+                <div class="form-group">
+                    <label class="label-log" for="exampleInputEmail1">Email or User</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="user" aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+
+                <div class="form-group">
+                    <label class="label-log" for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
+                </div>
+
+                <button type="submit" class="btn-warning btn-lg">Submit</button>
+
+                <a class="nounderline" href="{% url 'payment' coffeeType%}">
+                    <button type="button" class="btn-secondary btn-lg">
+                            Cancel
+                    </button>
+                </a>
+            </div>
         </div>
-
-        <div class="form-group">
-            <label class="label-log" for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
-        </div>
-
-        <button type="submit" class="btn-warning btn-lg">Submit</button>
-
-        <a class="nounderline" href="{% url 'payment' coffeeType%}">
-            <button type="button" class="btn-secondary btn-lg">
-                    Cancel
-            </button>
-        </a>
     </form>
 </div>
 
