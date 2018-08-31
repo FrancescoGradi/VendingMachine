@@ -27,9 +27,6 @@ def about(request):
 def contact(request):
     return render(request, 'coffee/contact.html')
 
-def errorPage(request):
-    return render(request, 'coffee/error.html')
-
 def loginPage(request, coffeeType, loginFailed = False):
     return render(request, 'coffee/login.html', {'coffeeType': coffeeType, 'loginFailed': loginFailed})
 
@@ -55,7 +52,7 @@ def validateUser(request):
 
         return render(request, 'coffee/registration.html', {'registrationFailed': True})
     else:
-        return render(request, 'coffee/error.html')
+        return render(request, 'coffee/registration.html', {'registrationFailed': True})
 
 def pay(request, coffeeType):
     if request.method == 'POST':
