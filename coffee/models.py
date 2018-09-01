@@ -3,10 +3,10 @@ from django.utils import timezone
 
 class CoffeeCapsule(models.Model):
 
-    AMERICAN = 'American'
+    CLASSIC = 'Classic'
     ARABIC = 'Arabic'
     COFFEE_CHOICES = (
-        (AMERICAN, 'American'),
+        (CLASSIC, 'Classic'),
         (ARABIC, 'Arabic'),
     )
 
