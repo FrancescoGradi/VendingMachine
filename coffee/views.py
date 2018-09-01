@@ -41,14 +41,17 @@ def validateUser(request):
         password = request.POST.get('password')
         confirm = request.POST.get('confirm password')
 
+        print(password)
+
         if not User.objects.filter(username='username').exists():
             if password == confirm:
-                user, created = User.objects.get_or_create(username=username, first_name=name, last_name=lastName, password=password)
-                if created:
-                    user.save()
-                    return HttpResponseRedirect(reverse('index'))
-                else:
-                    return render(request, 'coffee/registration.html', {'registrationFailed': True})
+                user = User(username=username, first_name=name, last_name=lastName)
+                user.set_password(password)
+                user.save()
+
+                return HttpResponseRedirect(reverse('index'))
+            else:
+                return render(request, 'coffee/registration.html', {'registrationFailed': True})
 
         return render(request, 'coffee/registration.html', {'registrationFailed': True})
     else:
