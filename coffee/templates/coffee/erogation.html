@@ -61,8 +61,8 @@
             }, waitingTime);
 
             var timer = setTimeout(function() {
-                alert("Erogation finished\nPlease retire your capsule");
-                window.location.href = "{% url 'index' %}";
+                alert("Erogation finished\nClick 'Close' to retire your capsule");
+                window.location.href = "{% url 'finish' %}";
             }, waitingTime * 121);
 
             $("#success").fadeTo(2000, 500).slideUp(500, function(){

@@ -7,6 +7,8 @@ from django.db.models import Sum
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 
+from threading import Thread
+
 from .models import CoffeeCapsule
 
 class IndexView(generic.ListView):
@@ -48,7 +50,6 @@ def validateUser(request):
                 user = User(username=username, first_name=name, last_name=lastName)
                 user.set_password(password)
                 user.save()
-
                 return HttpResponseRedirect(reverse('index'))
             else:
                 return render(request, 'coffee/registration.html', {'registrationFailed': True})
@@ -75,7 +76,7 @@ def pay(request, coffeeType):
 
             if coffee_type_list[0].deleteOneCapsule(isLast):
 
-                # TODO il codice per far funzionare i motori dovrebbe essere inserito qui
+                # TODO Primo motore
                 print("Crick Crick Crick")
 
                 return render(request, 'coffee/erogation.html')
@@ -84,3 +85,7 @@ def pay(request, coffeeType):
                 return pay(request, coffeeType)
         else:
             return render(request, 'coffee/login.html', {'coffeeType': coffeeType, 'loginFailed': True})
+
+def finish(request):
+    # TODO Secondo motore
+    return HttpResponseRedirect(reverse('index'))
