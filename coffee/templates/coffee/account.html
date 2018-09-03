@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     <meta charset="UTF-8">
-    <title>Details</title>
+    <title>Account details</title>
 
     {% load static %}
 
@@ -17,7 +15,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
-
 <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -54,61 +51,41 @@
         </div>
     </nav>
 
-
-<form action="{% url 'loginPage' capsule.coffeeType %}" method="post">
-    {% csrf_token %}
-
-
     <div class="container-fluid">
 
         <div class="panel panel-warning">
             <div class="panel-heading">
-                <h1>CAPSULE CHOSEN: </h1>
+                <h1>ACCOUNT DETAILS: </h1>
             </div>
 
             <div id="panel-index-body" class="panel-body">
-
                 <table class="table">
                     <tr class="table-warning">
-                        <td class="table-warning"><b>Type</b></td>
-                        <td class="table-warning"><b>Price</b></td>
+                        <td class="table-warning"><b>User</b></td>
+                        <td class="table-warning"><b>Total Spending</b></td>
                     </tr>
                     <tr>
-                        <td class="table-bordered">{{ capsule }}</td>
-                        <td id="paymentPriceId" class="table-bordered">{{ capsule.coffeePrice }} €</td>
+                        <td class="table-bordered">{{ user }}</td>
+                        <td id="paymentPriceId" class="table-bordered">{{ totalSpending }} €</td>
                     </tr>
                 </table>
-
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="panel panel-warning">
-                            <div class="panel-heading"><h5><b><font color="black">Description: </font></b></h5></div>
-                            <div class="panel-body"><p>{{ capsule.coffeeDescription }}</p></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        {% if capsule.coffeeImage != None %}
-                            <img id="image" src="{{ capsule.coffeeImage.url }}" alt="Image of our coffee capsule">
-                        {% endif %}
-                    </div>
-                </div>
-
-
-                <input type="submit" class="btn-warning btn-lg" name="coffeeType" value="Pay">
-                <a class="nounderline" href="{% url 'index' %}">
-                    <button type="button" class="btn-secondary btn-lg">
-                            Cancel
-                    </button>
-                </a>
-
             </div>
 
-        </div>
+            {% if historyList %}
+                <ul class="list-group">
+                    {% for history in historyList %}
+                        <button type="button" class="list-group-item">
+                            <font color="#6F4827">{{ history.hCoffeeType }}</font>
+                            <span class="time">{{ history.purchaseTime }}</span>
+                        </button>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <ul class="list-group-item-warning">No purchase done.</ul>
+            {% endif %}
 
+        </div>
     </div>
 
-</form>
-
 </body>
-
 </html>

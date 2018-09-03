@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import CoffeeCapsule
+from .models import CoffeeCapsule, History
 
 def add10(modeladmin, request, queryset):
     for capsule in queryset:
@@ -33,3 +33,15 @@ class InsertCapsuleAdmin(admin.ModelAdmin):
     actions = [add10, add100, emptyCapsules]
 
 admin.site.register(CoffeeCapsule, InsertCapsuleAdmin)
+
+class InsertHistoryAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('User', {'fields': ['user']}),
+        ('CoffeeType', {'fields': ['hCoffeeType']}),
+        ('CoffeePrice', {'fields': ['hCoffeePrice']}),
+        ('PurchaseTime', {'fields': ['purchaseTime']}),
+    ]
+
+    list_display = ('user', 'hCoffeeType', 'hCoffeePrice', 'purchaseTime')
+
+admin.site.register(History, InsertHistoryAdmin)

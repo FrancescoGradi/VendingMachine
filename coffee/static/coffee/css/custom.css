@@ -280,3 +280,10 @@ h2 {
     font-size: 32px;
     color: #6F4827;
 }
+
+.time {
+    font-family: Times;
+    color: #6F4827;
+    float: right;
+    margin-right: 1em;
+}

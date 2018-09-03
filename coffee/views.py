@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 
 from threading import Thread
 
-from .models import CoffeeCapsule
+from .models import CoffeeCapsule, History
 
 class IndexView(generic.ListView):
     template_name = 'coffee/index.html'
@@ -43,8 +43,6 @@ def validateUser(request):
         password = request.POST.get('password')
         confirm = request.POST.get('confirm password')
 
-        print(password)
-
         if not User.objects.filter(username='username').exists():
             if password == confirm:
                 user = User(username=username, first_name=name, last_name=lastName)
@@ -76,6 +74,13 @@ def pay(request, coffeeType):
 
             if coffee_type_list[0].deleteOneCapsule(isLast):
 
+                coffeePrice = 0.50
+                if coffeeType == 'Classic':
+                    coffeePrice = 0.40
+
+                history = History(user=user, hCoffeeType = coffeeType, hCoffeePrice = coffeePrice)
+                history.save()
+
                 # TODO Primo motore
                 print("Crick Crick Crick")
 
@@ -89,3 +94,25 @@ def pay(request, coffeeType):
 def finish(request):
     # TODO Secondo motore
     return HttpResponseRedirect(reverse('index'))
+
+def log(request, loginFailed = False):
+    return render(request, 'coffee/login_bis.html', {'loginFailed': loginFailed})
+
+def account(request):
+    if request.method == 'POST':
+        username = request.POST.get('user')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+
+            historyList = History.objects.filter(user=user).order_by('-purchaseTime')
+            totalSpending = History.objects.filter(user=user).aggregate(total=Sum('hCoffeePrice'))['total']
+
+            totalSpending = round(totalSpending, 2)
+
+            return render(request, 'coffee/account.html', {'user': user, 'historyList': historyList, 'totalSpending': totalSpending})
+
+        else:
+            return render(request, 'coffee/login_bis.html', {'loginFailed': True})

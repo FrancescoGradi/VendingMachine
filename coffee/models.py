@@ -1,14 +1,15 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
+
+CLASSIC = 'Classic'
+ARABIC = 'Arabic'
+COFFEE_CHOICES = (
+    (CLASSIC, 'Classic'),
+    (ARABIC, 'Arabic'),
+)
 
 class CoffeeCapsule(models.Model):
-
-    CLASSIC = 'Classic'
-    ARABIC = 'Arabic'
-    COFFEE_CHOICES = (
-        (CLASSIC, 'Classic'),
-        (ARABIC, 'Arabic'),
-    )
 
     # il campo id e' creato automaticamente ed e' reso chiave primaria
     # i seguenti campi sono spunti soggetti a modifiche o cancellazioni
@@ -56,3 +57,12 @@ class CoffeeCapsule(models.Model):
     def empty(self):
         self.coffeeQuantity = 0
         self.save()
+
+class History(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    hCoffeeType = models.CharField('Type', choices=COFFEE_CHOICES, max_length=25)
+    hCoffeePrice = models.DecimalField('Price', max_digits=4, decimal_places=2, default=0.50)
+    purchaseTime = models.DateTimeField('Purchase Time', default=timezone.now)
+
+
