@@ -3,22 +3,27 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
-from django.db.models import Sum
+from django.db.models import Sum, Value
+from django.db.models.fields import BooleanField
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-from threading import Thread
 
 from .models import CoffeeCapsule, History
 
-class IndexView(generic.ListView):
-    template_name = 'coffee/index.html'
-    context_object_name = 'coffee_list'
+def index(request):
+    coffee_list = CoffeeCapsule.objects.all().values('coffeeType', 'coffeePrice').annotate(coffeeQuantity=Sum('coffeeQuantity'), firstExpired=Value(False, BooleanField()))
+    # Per la scadenza aggiungo un campo firstExpired all'oggetto passato coffee_list, a quel punto con una query
+    # identifico il primo elemento di ogni tipo di caffe' (cioe' la prossima capsula erogata) e verifico la
+    # scadenza. Se scaduto metto firstExpired a True, così facendo l'html riesce a decidere se dare non
+    # disponibile un tipo di capsula.
 
-    # Ritorna la lista dei caffe', raggruppata in base al tipo, con quantità sommate
-    def get_queryset(self):
-        return CoffeeCapsule.objects.all().values('coffeeType', 'coffeePrice').annotate(coffeeQuantity=Sum('coffeeQuantity'))
+    for capsule in coffee_list:
+        if CoffeeCapsule.objects.filter(coffeeType=capsule['coffeeType']).order_by('additionDate')[0].isExpired():
+            capsule['firstExpired'] = True
+
+    return render(request, 'coffee/index.html', {'coffee_list': coffee_list})
 
 def payment(request, coffeeType):
     capsules = CoffeeCapsule.objects.filter(coffeeType=coffeeType).order_by('additionDate')

@@ -81,7 +81,7 @@
 
                     <ul class="list-group">
                         {% for capsule in coffee_list %}
-                            {% if capsule.coffeeQuantity is 0 %}
+                            {% if capsule.coffeeQuantity is 0 or capsule.firstExpired %}
                                 <button type="button" class="list-group-item disabled">
                                     <font color="#808080">{{ capsule.coffeeType }}</font>
                                     <span class="badge badge-primary badge-pill">No available</span>
