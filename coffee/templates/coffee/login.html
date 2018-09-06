@@ -16,7 +16,6 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
     <script src="{% static '/coffee/js/bootstrap.min.js' %}"></script>
-    <script src="{% static '/coffee/js/bootbox.min.js' %}"></script>
     <script src="{% static '/coffee/js/jquery-3.3.1.min.js' %}"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +33,7 @@
 
 <div class="login-div">
 
-    <form action="{% url 'pay' coffeeType %}" method="post">
+    <form action="{% url 'authenticate' %}" method="post">
         {% csrf_token %}
 
         <div class="panel panel-warning">
@@ -56,7 +55,7 @@
 
                 <button type="submit" class="btn-warning btn-lg">Submit</button>
 
-                <a class="nounderline" href="{% url 'payment' coffeeType%}">
+                <a class="nounderline" href="{% url 'index' %}">
                     <button type="button" class="btn-secondary btn-lg">
                             Cancel
                     </button>

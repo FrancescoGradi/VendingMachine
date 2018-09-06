@@ -65,4 +65,8 @@ class History(models.Model):
     hCoffeePrice = models.DecimalField('Price', max_digits=4, decimal_places=2, default=0.50)
     purchaseTime = models.DateTimeField('Purchase Time', default=timezone.now)
 
+    def clean(self):
+        print("Ciao")
+        self.delete()
+
 

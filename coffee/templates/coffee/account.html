@@ -42,11 +42,25 @@
                     </li>
                 </ul>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a id="signup" href="{% url 'registration' %}">Sign up</a>
-                    </li>
-                </ul>
+                {% if user.is_authenticated %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a id="signup" href="{% url 'account' %}">Account</a>
+                        </li>
+                        <li>
+                            <a id="signup" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    </ul>
+                {% else %}
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a id="signup" href="{% url 'log' %}">Sign in</a>
+                        </li>
+                        <li>
+                            <a id="signup" href="{% url 'registration' %}">Sign up</a>
+                        </li>
+                    </ul>
+                {% endif %}
             </div>
         </div>
     </nav>
@@ -69,21 +83,35 @@
                         <td id="paymentPriceId" class="table-bordered">{{ totalSpending }} €</td>
                     </tr>
                 </table>
-            </div>
 
-            {% if historyList %}
-                <ul class="list-group">
-                    {% for history in historyList %}
-                        <button type="button" class="list-group-item">
-                            <font color="#6F4827">{{ history.hCoffeeType }}</font>
-                            <span class="time">{{ history.purchaseTime }}</span>
+                {% if historyList %}
+                    <ul class="list-group">
+                        {% for history in historyList %}
+                            <li class="list-group-item history">
+                                {{ history.hCoffeeType }}
+                                <span class="time history-t">{{ history.purchaseTime }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <ul class="list-group-item-warning">No purchase done.</ul>
+                {% endif %}
+
+                <form action="{% url 'cleanHistory' %}" method="post">
+                {% csrf_token %}
+
+                    {% if historyList %}
+                        <button type="submit" class="btn-warning btn-lg">Clean all</button>
+                    {% endif %}
+
+                    <a class="nounderline" href="{% url 'index' %}">
+                        <button type="button" class="btn-secondary btn-lg">
+                                Back
                         </button>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <ul class="list-group-item-warning">No purchase done.</ul>
-            {% endif %}
+                    </a>
 
+                </form>
+            </div>
         </div>
     </div>
 

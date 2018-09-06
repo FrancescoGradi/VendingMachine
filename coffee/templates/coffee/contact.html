@@ -43,13 +43,25 @@
                     <a href="{% url 'contact' %}">Contact</a>
                 </li>
             </ul>
-            </ul>
+            {% if user.is_authenticated %}
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a id="signup" href="{% url 'account' %}">Account</a>
+                    </li>
+                    <li>
+                        <a id="signup" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                </ul>
+            {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a id="signup" href="{% url 'log' %}">Sign in</a>
+                    </li>
                     <li>
                         <a id="signup" href="{% url 'registration' %}">Sign up</a>
                     </li>
                 </ul>
-
+            {% endif %}
         </div>
     </div>
 </nav>
@@ -60,11 +72,11 @@
             <h1>CONTACTS </h1>
         </div>
         <div id="panel-index-body" class="panel-body">
-                    <li class="list-group-item"> <b>Francesco Gradi</b>  francesco.gradi<span id="mail">@</span>stud.unifi.it</li>
-                    <li class="list-group-item"> <b>Federico M&aacute;lato</b>  federico.màlato<span id="mail">@</span>stud.unifi.it </li>
-                    <li class="list-group-item"> <b>Jody Ciappelli</b>  jody.ciappelli<span id="mail">@</span>stud.unifi.it </li>
+            <li class="list-group-item"> <b>Francesco Gradi</b>  francesco.gradi<span id="mail">@</span>stud.unifi.it</li>
+            <li class="list-group-item"> <b>Federico M&aacute;lato</b>  federico.màlato<span id="mail">@</span>stud.unifi.it </li>
+            <li class="list-group-item"> <b>Jody Ciappelli</b>  jody.ciappelli<span id="mail">@</span>stud.unifi.it </li>
         </div>
-        </div>
+    </div>
 </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>

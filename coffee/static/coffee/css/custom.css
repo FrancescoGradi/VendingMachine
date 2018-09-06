@@ -287,3 +287,16 @@ h2 {
     float: right;
     margin-right: 1em;
 }
+
+.history {
+    color: black;
+    border-color: black;
+    text-line-through-color: black;
+    margin-top: 2%;
+    padding: 0.5em;
+    font-size: medium;
+}
+
+.history-t {
+    color: black;
+}
