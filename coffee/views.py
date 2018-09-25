@@ -9,6 +9,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
+from . import servoControl as servo
 
 from .models import CoffeeCapsule, History
 
@@ -80,7 +81,12 @@ def pay(request, coffeeType):
             history.save()
 
             # TODO Primo motore
-            print("Crick Crick Crick")
+            if coffeeType == 'Classic':
+                servo.getCapsule(1)
+                print("Crick Crick Crick")
+            else:
+                servo.getCapsule(2)
+                print("Crack crack crack")
 
             return render(request, 'coffee/erogation.html')
 
@@ -91,7 +97,8 @@ def pay(request, coffeeType):
 
 def finish(request):
     # TODO Secondo motore
-    print("Crack Crack Crack")
+    #servo.getCapsule(2)
+    #print("Crack Crack Crack")
 
     return HttpResponseRedirect(reverse('index'))
 
