@@ -82,10 +82,10 @@ def pay(request, coffeeType):
 
             # TODO Primo motore
             if coffeeType == 'Classic':
-                servo.getCapsule(1)
+                servo.getCapsule(2, True)
                 print("Crick Crick Crick")
             else:
-                servo.getCapsule(2)
+                servo.getCapsule(1, True)
                 print("Crack crack crack")
 
             return render(request, 'coffee/erogation.html')
@@ -96,10 +96,6 @@ def pay(request, coffeeType):
         return render(request, 'coffee/login.html')
 
 def finish(request):
-    # TODO Secondo motore
-    #servo.getCapsule(2)
-    #print("Crack Crack Crack")
-
     return HttpResponseRedirect(reverse('index'))
 
 def log(request, loginFailed = False):
