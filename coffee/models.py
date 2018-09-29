@@ -66,7 +66,6 @@ class History(models.Model):
     purchaseTime = models.DateTimeField('Purchase Time', default=timezone.now)
 
     def clean(self):
-        print("Ciao")
         self.delete()
 
 
