@@ -84,7 +84,7 @@
                             {% if capsule.coffeeQuantity is 0 or capsule.firstExpired %}
                                 <button type="button" class="list-group-item disabled">
                                     <font color="#808080">{{ capsule.coffeeType }}</font>
-                                    <span class="badge badge-primary badge-pill">No available</span>
+                                    <span class="badge badge-primary badge-pill">Not available</span>
                                 </button>
                             {% else %}
                                 <a class="nounderline" href="{% url 'payment' capsule.coffeeType %}">

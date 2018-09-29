@@ -2,28 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Erogation...</title>
+    <title>Thanks</title>
 
     {% load static %}
 
     <link href="{% static '/coffee/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
 
-    <link href="{% static '/coffee/css/custom.css' %}" rel="stylesheet">
+    <link href="{% static '/coffee/css/custom.css' %}" rel="stylesheet" type="text/css">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script src="{% static '/coffee/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/coffee/js/jquery-3.3.1.min.js' %}"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
-<body id="erogationBody">
 
-    <div class="bar-div">
-        <h2><font color="#6F4827">Waiting...</font></h2>
-        <br>
-        <div class="progress">
-          <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
-            <span class="sr-only"></span>
-          </div>
+<body>
+<div class="container-fluid">
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h1 id="heading-title">THANKS </h1>
+        </div>
+
+        <div id="panel-index-body" class="panel-body">
+            Thank you for choosing BuyCoffee. Your product will be erogated in a few seconds.
+            <br>
+            <br>
+            <a class="nounderline" href="{% url 'index' %}">
+                <button type="button" class="btn-warning btn-lg">
+                    Continue shopping
+                </button>
+            </a>
         </div>
     </div>
+</div>
 
     <div class="alert">
         <div id="success" class="alert alert-success" role="alert">
@@ -46,25 +63,6 @@
     <script>
 
         $(document).ready (function(){
-            var i = 0;
-            var waitingTime = 50
-
-            var counter = setInterval(function () {
-                i++;
-                if (i > 0) {
-                    $('.progress-bar').css('width', i + '%');
-                }
-                else {
-                    clearInterval(counter);
-                }
-
-            }, waitingTime);
-
-            var timer = setTimeout(function() {
-                alert("Erogation finished\nClick 'Close' to retire your capsule");
-                window.location.href = "{% url 'finish' %}";
-            }, waitingTime * 121);
-
             $("#success").fadeTo(2000, 500).slideUp(500, function(){
                 $("#success").slideUp(500);
             });

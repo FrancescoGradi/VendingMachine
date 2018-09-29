@@ -18,7 +18,7 @@ def index(request):
     # Per la scadenza aggiungo un campo firstExpired all'oggetto passato coffee_list, a quel punto con una query
     # identifico il primo elemento di ogni tipo di caffe' (cioe' la prossima capsula erogata) e verifico la
     # scadenza. Se scaduto metto firstExpired a True, così facendo l'html riesce a decidere se dare non
-    # disponibile un tipo di capsula.
+    # disponibile un tipo di capsula
 
     for capsule in coffee_list:
         if CoffeeCapsule.objects.filter(coffeeType=capsule['coffeeType']).order_by('additionDate')[0].isExpired():
@@ -80,27 +80,17 @@ def pay(request, coffeeType):
             history = History(user=user, hCoffeeType = coffeeType, hCoffeePrice = coffeePrice)
             history.save()
 
-            # TODO Primo motore
             if coffeeType == 'Classic':
                 servo.getCapsule(1)
-                print("Crick Crick Crick")
             else:
                 servo.getCapsule(2)
-                print("Crack crack crack")
 
-            return render(request, 'coffee/erogation.html')
+            return render(request, 'coffee/thanksPage.html')
 
         else:
             return pay(request, coffeeType)
     else:
         return render(request, 'coffee/login.html')
-
-def finish(request):
-    # TODO Secondo motore
-    #servo.getCapsule(2)
-    #print("Crack Crack Crack")
-
-    return HttpResponseRedirect(reverse('index'))
 
 def log(request, loginFailed = False):
     return render(request, 'coffee/login.html', {'loginFailed': loginFailed})
