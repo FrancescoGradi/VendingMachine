@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
-from django.db.models import Sum, Value
+from django.db.models import Sum, Value, Count
 from django.db.models.fields import BooleanField
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -113,6 +113,7 @@ def account(request):
     user = request.user
     historyList = History.objects.filter(user=user).order_by('-purchaseTime')
     totalSpending = History.objects.filter(user=user).aggregate(total=Sum('hCoffeePrice'))['total']
+    favouriteType = historyList.values("hCoffeeType").annotate(coffeeQuantity=Count('hCoffeeType'))[0]
 
     if totalSpending is not None:
         totalSpending = round(totalSpending, 2)
@@ -120,7 +121,7 @@ def account(request):
         totalSpending = 0
 
     return render(request, 'coffee/account.html',
-                  {'user': user, 'historyList': historyList, 'totalSpending': totalSpending})
+                  {'user': user, 'historyList': historyList, 'totalSpending': totalSpending, 'favouriteType': favouriteType['hCoffeeType']})
 
 @login_required
 def logoutView(request):
@@ -136,3 +137,7 @@ def cleanHistory(request):
         history.clean()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+
+
